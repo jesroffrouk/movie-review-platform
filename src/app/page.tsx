@@ -1,101 +1,95 @@
-import Image from "next/image";
+'use client'
+import Image from "next/image"
+import UserInitializer from "./components/UserInitializer"
+
+const Hero = () =>{
+  return(
+    <>
+    <div
+  className="hero min-h-screen mt-[-4rem]"
+  style={{
+    backgroundImage: "url(./allmovies.jpg)",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    maskImage: "linear-gradient(to right, transparent, black 30%, black 70%, transparent)",
+    WebkitMaskImage: "linear-gradient(to right, transparent, black 30%, black 70%, transparent)"
+ 
+  }}>
+  <div className="absolute inset-0 bg-black/50"></div>
+  <div className="hero-content text-neutral-content text-center">
+    <div className="max-w-md mt-24">
+      <h1 className="mb-3 text-5xl font-bold drop-shadow-lg">Hello there</h1>
+      <p className="mb-3 font-medium drop-shadow-md">
+        You arrived at the best platform where <br /> you can review movies without getting killed 
+      </p>
+      <button className="btn btn-outline">Be comfortable</button>
+    </div>
+  </div>
+</div>
+    </>
+  )
+}
+
+const FeatruesCard = ({content}: {content: string}) =>{
+  return (
+    <>
+    <div className="card bg-gray-600 text-primary-content w-72 h-16">
+    <div className="p-4">
+    <p>{content}</p>
+  </div>
+</div>
+    </>
+  )
+}
+
+const Features =() =>{
+  const content = [
+    'keep track of your favorite movies','Review Movies without worries',
+    'recommend movies to others', 'connect with your friends'
+  ]
+  return (
+    <>
+    <div className="Features mt-5">
+    <h1 className="text-2xl font-medium">Mzone provides..</h1>
+    <div className="flex flex-row gap-4 ml-1 my-2">
+    <FeatruesCard content={content[0]} />
+    <FeatruesCard content={content[1]} />
+    <FeatruesCard content={content[2]} />
+    <FeatruesCard content={content[3]} />
+    </div>
+    </div>
+    </>
+  )
+}
+
+const CTAsection = () =>{
+  return (
+    <div className="flex flex-row my-8">
+    <div className="">
+    <Image src='/review.jpg' alt="review" width={500} height={400}/>
+    </div>
+    <div className="card w-full bg-base-100 card-xl shadow-sm">
+  <div className="card-body">
+    <h2 className="card-title">Need Support! WE ARE HERE TO HELP</h2>
+    <p>Have questions or feedback? Reach out to us—we're here to help! Contact us anytime for support, suggestions, or collaborations.</p>
+    <div className="justify-end card-actions">
+      <button className="btn btn-info">Help center</button>
+      <button className="btn btn-primary">contact us!</button>
+    </div>
+  </div>
+</div>
+    </div>
+  )
+}
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+  return (
+    <div className="px-4">
+    <UserInitializer />
+    <Hero />
+    <Features />
+    <CTAsection />
     </div>
   );
 }
