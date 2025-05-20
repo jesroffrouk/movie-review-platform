@@ -1,7 +1,7 @@
 
 import mongoose from "mongoose";
 
-const UserSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema<Models.lUser>({
     username:{
         type: String,
         required: [true,"Provide username"],
@@ -12,6 +12,14 @@ const UserSchema = new mongoose.Schema({
         required: [true,"Provide a valid username"],
         unique: true,
     },
+    followers: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users'
+    }],
+    following: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users'
+    }],
     password:{
         type: String,
         required: [true,"Provide a password"],
@@ -32,6 +40,6 @@ const UserSchema = new mongoose.Schema({
     timestamps: true
 })
 
-const User = mongoose.models.users ||  mongoose.model('users', UserSchema)
+const User = mongoose.models.users ||  mongoose.model<Models.lUser>('users', UserSchema)
 
 export default User;

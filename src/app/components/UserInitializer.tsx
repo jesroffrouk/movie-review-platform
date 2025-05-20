@@ -16,6 +16,7 @@ function UserInitializer() {
             console.log("login token expired , kindly login", error.data)
         }
         if(data){
+
             dispatch(setUser(data))
         }
     },[data,error,dispatch])

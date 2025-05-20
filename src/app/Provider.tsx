@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { usePathname } from 'next/navigation';
 import NetworkAlert from './components/NetworkAlert';
+import UserInitializer from './components/UserInitializer';
 function ProviderState({
     children,
 }: Readonly<{
@@ -22,6 +23,7 @@ function ProviderState({
   return (
     <Provider store={storeRef.current}>
         <NetworkAlert />
+        <UserInitializer />
         {!shouldSkipLayout &&<Header />}
         {children}
         { !shouldSkipLayout && <Footer />}

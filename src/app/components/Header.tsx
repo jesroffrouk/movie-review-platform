@@ -5,7 +5,7 @@ import useUserLogout from "@/hooks/useUserLogout";
 
 export default function Header(){
     const user = useAppSelector((state) => state.Auth.value)
-    // handling logout here later i can make custom hooks for it 
+  
     const logoutFunc = useUserLogout()
     return (
       <>
@@ -41,7 +41,7 @@ export default function Header(){
       </ul>
     </div>
     <div className="navbar-end">
-      <a className="btn" onClick={logoutFunc } >{user.username == '' ? "login":"logout"}</a>
+      <a className="btn" onClick={logoutFunc} >{user.username == '' ? "login":"logout"}</a>
     </div>
   </div>
       </>

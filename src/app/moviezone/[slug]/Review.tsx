@@ -46,7 +46,7 @@ export default function MovieReviewSection({movieId}: {movieId: string}){
   }
 
   const handleRating = (e: any) =>{
-      setRating(e.target.value)
+      setRating(e.target.value * 2)
   }
     
   
