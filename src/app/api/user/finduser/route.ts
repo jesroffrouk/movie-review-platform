@@ -3,11 +3,11 @@ import User from "@/models/UserSchema";
 import { NextRequest,NextResponse } from "next/server";
 
 connect();
-
-export async function POST(request: NextRequest){
+// change it to GET method
+export async function GET(request: NextRequest){
  
-    const redbody = await request.json()
-    const {searchQuery} = redbody
+    const {searchParams} = new URL(request.url)
+    const searchQuery = searchParams.get('searchQuery')
 
 
     try {

@@ -8,10 +8,7 @@ function page() {
     const [isVerified,setIsVerified] = useState(false)
     const checkToken = async() =>{
        try {
-         const request = await fetch('/api/verifyemail',{
-             method: 'POST',
-             body: JSON.stringify(token)
-         })
+         const request = await fetch(`/api/verifyemail?token=${token}`)
          const response = await request.json()
          if(response.error){
              console.error('Error', response.error);

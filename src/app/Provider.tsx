@@ -19,7 +19,7 @@ function ProviderState({
           // Create the store instance the first time this renders
           storeRef.current = makeStore()
         }
-  const shouldSkipLayout = pathname === '/login' || pathname === '/signup';
+  const shouldSkipLayout = pathname === '/auth'
   return (
     <Provider store={storeRef.current}>
         <NetworkAlert />

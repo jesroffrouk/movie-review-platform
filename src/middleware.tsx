@@ -16,10 +16,10 @@ export async function middleware(request: NextRequest) {
     } catch (error: any) {
       if (error.name === 'TokenExpiredError') {
         console.log('Token expired. Please log in again.');
-        return NextResponse.redirect(new URL('/login', request.url));
+        return NextResponse.redirect(new URL('/auth', request.url));
       } else {
         console.log('Invalid token:', error.message);
-        return NextResponse.redirect(new URL('/login', request.url));
+        return NextResponse.redirect(new URL('/auth', request.url));
       }
     }
   }
@@ -28,7 +28,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/', request.url))
   }
   if(!isPublic && !token){
-    return NextResponse.redirect(new URL('/login',request.url))
+    return NextResponse.redirect(new URL('/auth',request.url))
   }
   return NextResponse.next();
 }
@@ -36,5 +36,6 @@ export async function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     '/moviezone',
+    '/profile',
   ],
 }

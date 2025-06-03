@@ -1,8 +1,9 @@
 import User from "@/models/UserSchema";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function PUT(request: NextRequest, {params} : { params: Promise<{ id: string }>}){
-    const {id} = await params
+export async function PUT(request: NextRequest){
+    const {searchParams} = new URL(request.url)
+    const id = searchParams.get("id") as string
 
     const reqbody = await request.json()
     const {followId} = reqbody

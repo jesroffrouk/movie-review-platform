@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
        
-        <html lang="en" data-theme="light">
+        <html lang="en" data-theme="dark">
         <body>
           <main> 
         <ProviderState>

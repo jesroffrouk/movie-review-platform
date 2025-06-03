@@ -20,6 +20,7 @@ declare global {
     type reviews ={
         _id: string;
         userid: string;
+        title: string;
         movieid: string;
         reviews: string;
         rating: number;
@@ -54,7 +55,7 @@ declare global {
 
     type Movie = {
       Title: string;
-      Year: string;
+      Year: number;
       imdbID: string;
       Type: string;
       Poster: string;
@@ -82,11 +83,20 @@ declare global {
     };
     type Review = {
       _id: string,
-      userid: string,
-      Movieid: string,
+      userid: {
+        _id: string,
+        username: string,
+        email: string
+      },
+      title: string,
+      movieid: string,
       rating: number,
       reviews: string,
-    }[];
+    };
+    type Res = {
+      message: string,
+      status: number
+    }
   }
   export {};
   

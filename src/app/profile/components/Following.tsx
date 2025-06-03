@@ -24,6 +24,8 @@ export default function Following({user}: {user: UserWreviews | null}){
 
     return(
         <>
+        <div className="min-h-screen flex items-start justify-center">
+          <div className="w-full max-w-sm px-4">
         <p>people you follow</p>
         {followingList && followingList.map((user : User) => (
               <Link href={`/find/${user.username}`} key={user._id} >
@@ -46,6 +48,8 @@ export default function Following({user}: {user: UserWreviews | null}){
               </div>
               </Link>
             ))}
+        </div>
+        </div>
         </>
     )
 }

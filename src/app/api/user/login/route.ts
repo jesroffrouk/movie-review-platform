@@ -13,12 +13,27 @@ export async function POST(request: NextRequest){
 
         const user = await User.findOne({username})
         if(!user){
-            return NextResponse.json({error: "user doesnot exist"},{status: 400})
+            return NextResponse.json(
+                {
+                    error: 
+                    {
+                        code: 'USER_NOT_EXIST',
+                        message: "user doesnot exist"
+                    }
+                }
+                ,{status: 401})
         }
         //password verification
         const checkPassword = await bcrypt.compare(password,user.password)
         if(!checkPassword){
-            return NextResponse.json({error: "Enter correct Username or Password"},{status: 400})
+            return NextResponse.json({
+                    error: 
+                    {
+                        code: 'INCORRECT_USER_PASSWORD',
+                        message: "please provide correct username or password"
+                    }
+                }
+                ,{status: 401})
         }
         //authentication
         const secretKey = process.env.TOKEN_SECRET!
@@ -33,5 +48,14 @@ export async function POST(request: NextRequest){
 
     } catch (error: any) {
         console.log("error while login" + error.message)
+        return NextResponse.json(
+            {
+                    error: 
+                    {
+                        code: 'SERVER_ERROR',
+                        message: error.message
+                    }
+            },{status: 501})
+        
     }
 }

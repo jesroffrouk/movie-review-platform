@@ -3,12 +3,14 @@ import { NextRequest, NextResponse } from "next/server"
 import { connect } from "@/dbconfig/dbConfig";
 import "@/models/UserSchema";
 
+connect()
 
+export async function GET(request: NextRequest) {
+    
+    const {searchParams} = new URL(request.url)
+    const movieid = searchParams.get('id')
 
-export async function POST(request: NextRequest) {
-    await connect()
-    const requestBody = await request.json()
-    const {movieid} = requestBody
+    
     const ReviewData = await Review.find({movieid}).populate('userid','username email')
     if (ReviewData.length === 0) {
       console.log("No reviews found for this movie.");

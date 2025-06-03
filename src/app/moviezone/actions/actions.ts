@@ -1,6 +1,6 @@
 'use server'
 
-const apikey = "fc52ce23";
+const apikey = process.env.API_KEY!
 const getMovies = async(search: string): Promise<Movie> =>{
   try {
      const searchQuery = encodeURIComponent(search)

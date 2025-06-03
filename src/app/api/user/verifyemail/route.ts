@@ -3,8 +3,8 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest){
    try {
-     const reqbody = await request.json()
-     const {token} = reqbody
+     const {searchParams} = new URL(request.url)
+     const token = searchParams.get("token")
  
      const user = await User.findOne({verifyToken: token, verifyTokenExpiry: {$gt: Date.now()}})
      if(!user){

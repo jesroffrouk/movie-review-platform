@@ -3,14 +3,14 @@ export default function Footer(){
     return(
       <>
       <footer className="footer footer-center bg-base-200 text-base-content rounded p-10">
-    <nav className="grid grid-flow-col gap-4">
+    <nav className="grid grid-flow-row sm:grid-flow-col gap-4">
       <a className="link link-hover">About us</a>
       <a className="link link-hover">Contact</a>
       <a className="link link-hover">Jobs</a>
       <a className="link link-hover">Contribute</a>
     </nav>
     <nav>
-      <div className="grid grid-flow-col gap-4">
+      <div className="grid grid-flow-row sm:grid-flow-col gap-4">
         <a>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -47,7 +47,7 @@ export default function Footer(){
       </div>
     </nav>
     <aside>
-      <p>Copyright © {new Date().getFullYear()} - All right reserved by Jakes pvt Limted</p>
+      <p>Copyright © {new Date().getFullYear()} <br /> All right reserved by Jakes pvt Limted</p>
     </aside>
   </footer>
       </>

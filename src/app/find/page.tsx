@@ -11,19 +11,15 @@ export default function UserSearch() {
     setIsSearching(true)
 
     // backend calls 
-    const request = await fetch('/api/user/finduser',{
-            method: 'POST',
-            credentials: 'include',
-            body: JSON.stringify({searchQuery})
-        })
+    const request = await fetch(`/api/user/finduser?searchQuery=${searchQuery}`)
     const response = await request.json()
     setResults(response)
     setIsSearching(false)
   }
 
   return (
-    <div className="max-w-4xl mx-auto">
-      <div className="flex gap-2 my-3">
+    <div className="max-w-4xl mx-auto mt-3 min-h-screen">
+      <div className="flex gap-2 w-full px-10 sm:p-auto m-auto">
         <input
           type="text"
           placeholder="Search users by name, email, role or department..."
@@ -79,7 +75,7 @@ export default function UserSearch() {
         </div>
       ) : results ? (
         results.length > 0 ? (
-          <div className="space-y-4">
+          <div className="space-y-4 mt-3 ">
             {results.map((user) => (
               <Link href={`/find/${user.username}`} key={user._id} >
               <div className="card bg-base-100 shadow-md hover:shadow-lg transition-shadow mb-2">
@@ -99,7 +95,6 @@ export default function UserSearch() {
                       Followers:<span className="badge badge-sm">{user.followersCount}</span>
                       Following:<span className="badge badge-sm">{user.followingCount}</span>
                       </div>
-                      <div className="btn"> <span className="text-xs opacity-70">connect</span> </div>
                     </div>
                   </div>
                 </div>
@@ -117,12 +112,16 @@ export default function UserSearch() {
           </div>
         )
       ) : (
-        <div className="text-center py-12 card bg-base-100 shadow mb-2">
-          <div className="card-body">
-            <h3 className="text-lg font-medium">Search for users</h3>
-            <p className="opacity-70">Enter a search term and click the search button</p>
+        <div className="h-screen flex items-center justify-center p-4">
+        <div className="card bg-base-100 py-16 mb-2 w-full max-w-xl h-full flex items-center justify-center">
+          <div className="card-body flex flex-col justify-center items-center text-center">
+            <h3 className="text-2xl font-medium">Search for Users</h3>
+            <p className="opacity-70 mt-2 text-lg">
+              Enter a User name and click the search button
+            </p>
           </div>
         </div>
+      </div>
       )}
     </div>
   )

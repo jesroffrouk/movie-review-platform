@@ -11,9 +11,27 @@ try {
     const reqbody = await request.json()
     const {username,password,email} = reqbody
 
-    const user = await User.findOne({email})
+    const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+
+    if(!isValidEmail){
+        return NextResponse.json({
+            error: {
+                code: "INVALID_EMAIL",
+                message: "please provide a valid email address"
+            }
+        },{status: 401})
+    }
+    const user = await User.findOne({
+        $or: [{email},{username}]
+    })
     if(user){
-        return NextResponse.json({error: "user already exist"},{status: 400})
+        return NextResponse.json(
+            {
+                error: {
+                    code: "USER_EXIST",
+                    message: "user already exist"
+                }
+    },{status: 401})
     }
     const salt = await bcrypt.genSalt(10)
     const hashPassword = await bcrypt.hash(password,salt)
@@ -26,13 +44,17 @@ try {
     const saved = await newUser.save()
     console.log(saved)
     //email verification
-    await SendMail({email,emailType: "VERIFY",userId: saved._id})
+    // skipping email verification for now , as mailtrap is not working correctly
+    // await SendMail({email,emailType: "VERIFY",userId: saved._id})
     return NextResponse.json({
         message: "User Registered Successfully",
         success: true,
         saved
     })
 } catch (error: any) {
-    return NextResponse.json({error: error.message},{status: 500})
+    return NextResponse.json({error: {
+        code: "SERVER_ERROR",
+        message: error.message
+    }},{status: 501})
 }
 }

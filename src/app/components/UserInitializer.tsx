@@ -1,6 +1,6 @@
 'use client'
 
-import { useGetUserQuery } from "@/lib/features/authApi"
+import { useGetUserQuery } from "@/lib/features/api"
 import { setUser } from "@/lib/features/authSlice"
 import { useAppDispatch } from "@/lib/hooks"
 import { useEffect } from "react"

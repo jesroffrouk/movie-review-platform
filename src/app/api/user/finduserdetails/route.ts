@@ -2,16 +2,16 @@
 import { connect } from "@/dbconfig/dbConfig";
 import Review from "@/models/ReviewSchema";
 import User from "@/models/UserSchema";
-import jwt, { Jwt } from 'jsonwebtoken'
+import jwt from 'jsonwebtoken'
 import { cookies } from 'next/headers'
 import { NextRequest, NextResponse } from "next/server";
 
 connect();
 
-export async function POST(request: NextRequest){
-    // fuckkkk.. convert into to get method , i am not changing the data so wtf i am using Post
-    const reqbody = await request.json()
-    const {username} =reqbody
+export async function GET(request: NextRequest){
+
+    const {searchParams} = new URL(request.url)
+    const targetUsername = searchParams.get("id") as string
 
          const cookiesStore = cookies()
          const token = (await cookiesStore).get('token')?.value || ''
@@ -23,28 +23,28 @@ export async function POST(request: NextRequest){
     
         //checking if its a valid token
          try {
-             const userData =  jwt.verify(token,secretKey) as jwt.JwtPayload
-             const userid = userData.id
+             const loggedUserData =  jwt.verify(token,secretKey) as jwt.JwtPayload
+             const loggedUserid = loggedUserData.id
              try {
-                const user = await User.findOne({username})
+                const targetUserData = await User.findOne({username: targetUsername})
                 .select('username email followers following')
                 .lean() as User | null
 
-                if (!user) {
+                if (!targetUserData) {
                     return NextResponse.json({ error: 'User not found' }, { status: 404 })
                 }
-
-                const isFollowing = user.followers.some(
-                    id => id.toString() === userid
+                
+                const isFollowing = targetUserData.followers.some(
+                    id => id.toString() === loggedUserid
                 )
 
                 let reviews = []
                 
                 if(isFollowing){
-                    reviews = await Review.find({userid})
+                    reviews = await Review.find({userid: targetUserData._id})
                 }
 
-                return NextResponse.json({user,reviews},{status: 200})
+                return NextResponse.json({user: targetUserData,reviews},{status: 200})
             } catch (error: any) {
                 console.log(error.message)
                 return NextResponse.json({error: 'error while accessing database'},{status: 501})
