@@ -2,11 +2,14 @@
 import Link from "next/link";
 import { useAppSelector } from "@/lib/hooks";
 import { CgProfile } from "react-icons/cg";
-
+import { useRouter } from "next/navigation";
 
 export default function Header(){
     const user = useAppSelector((state) => state.Auth.value)
-       
+    const router = useRouter()
+    const handleProfile = ()=>{
+      router.push('/profile')
+    }
     return (
       <>
       <div className="navbar shadow-sm relative z-10 bg-transparent">
@@ -40,7 +43,7 @@ export default function Header(){
     </div>
     <div className="navbar-end">
       <div className="btn">
-        <Link href="/profile">{user.username == '' ? "login":<CgProfile />}</Link>
+        <div onClick={handleProfile}>{user.username == '' ? "login":<CgProfile />}</div>
       </div>
     </div>
   </div>

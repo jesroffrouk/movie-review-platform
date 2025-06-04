@@ -23,6 +23,7 @@ function Page({ onSwitchToSignup }: LoginFormProps) {
         const request = await fetch('/api/user/login',{
             method: 'POST',
             credentials: 'include',
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)
         })
         const result = await request.json()
