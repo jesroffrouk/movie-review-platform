@@ -22,8 +22,8 @@ export async function GET(request: NextRequest){
             followingCount: user.following.length,
         }))
         return NextResponse.json(result,{status: 200})
-    } catch (error: any) {
-        console.log(error.message)
+    } catch (error) {
+        console.log(error)
         return NextResponse.json({error: "error while extracting from database"},{status: 501})
     }
 

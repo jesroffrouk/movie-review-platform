@@ -46,14 +46,14 @@ export async function POST(request: NextRequest){
 
         return response
 
-    } catch (error: any) {
-        console.log("error while login" + error.message)
+    } catch (error) {
+        console.log(error)
         return NextResponse.json(
             {
                     error: 
                     {
                         code: 'SERVER_ERROR',
-                        message: error.message
+                        message: 'server error'
                     }
             },{status: 501})
         

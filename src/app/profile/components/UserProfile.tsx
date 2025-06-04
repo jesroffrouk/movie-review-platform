@@ -2,6 +2,7 @@ import React from 'react'
 import ReviewLL from './ReviewLL'
 import { LogOut } from 'lucide-react'
 import useUserLogout from "@/hooks/useUserLogout";
+import Image from 'next/image';
 
 export default function UserProfile({user}: {user: UserWreviews}) {
   const logoutFunc = useUserLogout()
@@ -16,7 +17,12 @@ export default function UserProfile({user}: {user: UserWreviews}) {
       <div className="card-body items-center text-center">
         <div className="avatar">
           <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-            <img src={"/allmovies.jpg"} alt={`${user.user.username}'s avatar`} />
+            <Image
+              src="/allmovies.jpg"
+              alt={`${user.user.username}'s avatar`}
+              width={200}
+              height={200}
+            />
           </div>
         </div>
 

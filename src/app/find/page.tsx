@@ -1,6 +1,7 @@
 'use client'
 import Link from "next/link"
 import { useState } from "react"
+import Image from "next/image"
 
 export default function UserSearch() {
   const [searchQuery, setSearchQuery] = useState("")
@@ -83,7 +84,7 @@ export default function UserSearch() {
                   <div className="flex items-center gap-4">
                     <div className="avatar">
                       <div className="w-12 rounded-full">
-                        <img src={"./cartoon.jpg"} alt={user.username} />
+                        <Image src="/cartoon.jpg" alt={user.username} width={200} height={200} />
                       </div>
                     </div>
                     <div className="flex-1">

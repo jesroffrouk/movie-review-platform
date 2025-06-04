@@ -17,7 +17,8 @@ export async function POST(request: NextRequest){
      await user.save()
      return NextResponse.json({message: "email verified successfully", success: true},{status: 200})
 
-   } catch (error:any) {
-    return NextResponse.json({error: error.message},{status: 400})
+   } catch (error) {
+    console.log(error)
+    return NextResponse.json({error: error},{status: 400})
    }
 }

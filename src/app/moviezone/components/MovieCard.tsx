@@ -1,8 +1,9 @@
-"use client"
+'use client'
 
 import Link from "next/link"
-import { Film, Star } from "lucide-react"
+import { Film } from "lucide-react"
 import { useState } from "react"
+import Image from "next/image"
 
 interface MovieCardProps {
   id: string
@@ -10,6 +11,7 @@ interface MovieCardProps {
   imageUrl: string
   releaseYear: number
   genre?: string
+  fallback?: string
 }
 
 export default function MovieCard({
@@ -18,7 +20,9 @@ export default function MovieCard({
   imageUrl,
   releaseYear,
   genre = "Action",
+  fallback = "/allmovies.jpg",
 }: MovieCardProps) {
+  const [imgSrc, setImgSrc] = useState(imageUrl === "N/A" ? fallback : imageUrl)
   const [isHovered, setIsHovered] = useState(false)
 
   return (
@@ -34,13 +38,17 @@ export default function MovieCard({
       onMouseLeave={() => setIsHovered(false)}
     >
       <figure className="relative h-64 overflow-hidden">
-        {imageUrl ? (
+        {imgSrc ? (
           <>
-          {/* i would later prefer to set Image tag instead img */}
-            <img
-              src={imageUrl=='N/A' ? ("/allmovies.jpg"):(imageUrl)}
+            <Image
+              src={imgSrc}
               alt={title}
-              className={`object-cover w-full h-full transition-transform duration-700 ${isHovered ? "scale-110" : "scale-100"}`}
+              width={500}
+              height={300}
+              onError={() => setImgSrc(fallback)}
+              className={`object-cover w-full h-full transition-transform duration-700 ${
+                isHovered ? "scale-110" : "scale-100"
+              }`}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-80" />
           </>
@@ -58,16 +66,12 @@ export default function MovieCard({
           <h2 className="text-2xl font-bold mb-1 drop-shadow-md">{title}</h2>
           <div className="flex items-center justify-between">
             <p className="text-sm opacity-90">{releaseYear}</p>
-            <div className="flex items-center gap-1">
-            </div>
           </div>
         </div>
       </figure>
 
       <div className="card-body p-5">
         <div className="flex items-center justify-between">
-          <div className="flex">
-          </div>
           <Link href={`/moviezone/${id}`} className="w-full">
             <button
               className="btn btn-primary btn-sm w-full font-medium transition-all duration-300 hover:shadow-lg hover:brightness-110"

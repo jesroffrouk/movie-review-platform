@@ -36,8 +36,8 @@ export async function PUT(request: NextRequest){
                     }
                 return NextResponse.json({message: "successfully saved in database"}, {status: 200})
 
-            } catch (error: any) {
-                console.log('error while decoding jwt',error.message)     
+            } catch (error) {
+                console.log('error while decoding jwt',error)     
                 return NextResponse.json({error: 
                 {
                     code: "UNAUTHORIZED_REQUEST",
@@ -52,8 +52,8 @@ export async function PUT(request: NextRequest){
                     message:'unauthorized request to fetch data'
                 }},{status: 401})
         }  
-    } catch (error: any) {
-        console.log(error.message)
+    } catch (error) {
+        console.log(error)
         return NextResponse.json({error: 
             {
                 code: "SERVER_ERROR",

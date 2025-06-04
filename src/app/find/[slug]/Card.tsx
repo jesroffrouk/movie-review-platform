@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import { useAppSelector } from "@/lib/hooks";
 import ReviewLL from "@/app/profile/components/ReviewLL";
 import { useGetUserDetailsQuery, useSetFollowMutation } from "@/lib/features/api";
+import Image from "next/image";
 
 export default function Card({username}: {username: string}){
    
-    const {data: user, isLoading: loading , error} = useGetUserDetailsQuery(username)
-    console.log(user)
+    const {data: user, isLoading: loading } = useGetUserDetailsQuery(username)
     const [ setFollow ] = useSetFollowMutation()
 
     
@@ -42,7 +42,7 @@ export default function Card({username}: {username: string}){
         const id = loggedUser.id
         await setFollow({id, followId , username}).unwrap()
         
-      } catch (error: any) {
+      } catch (error) {
         console.log("error while following user")
         console.error(error)
       }
@@ -82,7 +82,12 @@ export default function Card({username}: {username: string}){
         <div className="card-body items-center text-center">
           <div className="avatar">
           <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-            <img src={"/allmovies.jpg"} alt={`${user.user.username}'s avatar`} />
+            <Image
+                src="/allmovies.jpg"
+                alt={`${user.user.username}'s avatar`}
+                width={200}
+                height={200}
+              />
           </div>
         </div>
 
@@ -101,7 +106,7 @@ export default function Card({username}: {username: string}){
         </div>
 
           <div className="card-actions justify-end">
-            <button className="btn btn-primary btn-sm gap-2" onClick={()=> user && handleFollow(user.user._id)} disabled={!user || isFollowed == true}>{isFollowed ? ('following'): ("follow")}</button>
+            { !(loggedUser.id == user.user._id) && <button className="btn btn-primary btn-sm gap-2" onClick={()=> user && handleFollow(user.user._id)} disabled={!user || isFollowed == true}>{isFollowed ? ('following'): ("follow")}</button>}
           </div>
         </div>
     </div>

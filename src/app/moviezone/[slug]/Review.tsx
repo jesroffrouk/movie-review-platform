@@ -57,8 +57,8 @@ export default function MovieReviewSection({movieId}: {movieId: string}){
         setError('provide a rating')
       }
     }
-     catch (error: any) {
-      console.log(error.message) 
+     catch (error) {
+      console.log(error) 
     }
     setFormData({...formData, title: '', input: ''})
   }
@@ -73,12 +73,21 @@ export default function MovieReviewSection({movieId}: {movieId: string}){
     console.log(allReviewsQuery.error)
   }
 
-  const handleInputChange = (e: any) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
-  }
+  const handleInputChange = (
+  e:
+    | React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    | React.MouseEvent<HTMLElement>
+) => {
+  const target = e.target as HTMLInputElement | HTMLTextAreaElement;
+
+  if (!target.name) return;
+
+  setFormData((prev) => ({
+    ...prev,
+    [target.name]: target.value,
+  }));
+};
+
   
   
   return(

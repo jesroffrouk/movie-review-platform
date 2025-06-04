@@ -9,7 +9,8 @@ export async function GET(){
             expires: new Date(),
         })
         return response
-    } catch (error: any) {
-        return NextResponse.json({error: error.message},{status: 400})
+    } catch (error) {
+        console.log(error)
+        return NextResponse.json({error: "server error while logging out"},{status: 401})
     }
 }

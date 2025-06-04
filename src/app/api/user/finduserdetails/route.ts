@@ -45,12 +45,12 @@ export async function GET(request: NextRequest){
                 }
 
                 return NextResponse.json({user: targetUserData,reviews},{status: 200})
-            } catch (error: any) {
-                console.log(error.message)
+            } catch (error) {
+                console.log(error)
                 return NextResponse.json({error: 'error while accessing database'},{status: 501})
                 
             }
-         } catch (error: any) {
+         } catch (error) {
           console.log(error)
           return NextResponse.json({error: 'other errors'},{status: 401})
          }

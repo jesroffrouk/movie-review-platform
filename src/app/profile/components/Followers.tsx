@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function Followers({user}: {user: UserWreviews | null}){
 
@@ -20,7 +21,7 @@ export default function Followers({user}: {user: UserWreviews | null}){
             setFollowersList(response)
         }
         handleFollowers()
-    },[])
+    },[user?.user.followers])
 
     return(
         <>
@@ -34,7 +35,12 @@ export default function Followers({user}: {user: UserWreviews | null}){
                     <div className="flex items-center gap-4">
                       <div className="avatar">
                         <div className="w-12 rounded-full">
-                          <img src={"./cartoon.jpg"} alt={user.username} />
+                          <Image
+                              src="/cartoon.jpg" 
+                              alt={user.username}
+                              width={300}      
+                              height={300}      
+                            />
                         </div>
                       </div>
                       <div className="flex-1">

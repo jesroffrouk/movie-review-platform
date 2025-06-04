@@ -2,7 +2,7 @@ import { connect } from "@/dbconfig/dbConfig";
 import User from "@/models/UserSchema";
 import { NextRequest,NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
-import { SendMail } from "@/helpers/mailer";
+// import { SendMail } from "@/helpers/mailer";
 
 connect()
 
@@ -10,6 +10,10 @@ export async function POST(request: NextRequest){
 try {
     const reqbody = await request.json()
     const {username,password,email} = reqbody
+
+    // ip tracking 
+    const ip = request.headers.get('x-forwared-for')?.split(',')[0].trim() || 'unknown'
+    
 
     const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 
@@ -21,6 +25,9 @@ try {
             }
         },{status: 401})
     }
+
+    console.log(`[SIGNUP ATTEMPT] IP: ${ip} | Email: ${email}`)
+
     const user = await User.findOne({
         $or: [{email},{username}]
     })
@@ -51,10 +58,11 @@ try {
         success: true,
         saved
     })
-} catch (error: any) {
+} catch (error) {
+    console.log(error)
     return NextResponse.json({error: {
         code: "SERVER_ERROR",
-        message: error.message
+        message: "error while signing up"
     }},{status: 501})
 }
 }

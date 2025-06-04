@@ -7,7 +7,7 @@ interface LoginFormProps {
   onSwitchToSignup: () => void
 }
 
-function page({ onSwitchToSignup }: LoginFormProps) {
+function Page({ onSwitchToSignup }: LoginFormProps) {
   const router = useRouter()
   const [showPassword, setShowPassword] = useState(false)
   const [formData, setFormData] = useState({
@@ -43,8 +43,8 @@ function page({ onSwitchToSignup }: LoginFormProps) {
             }
         }
         
-    } catch (error:any) {
-        console.log("Error",error.message)
+    } catch (error) {
+        console.log(error)
     }
   }
 
@@ -138,4 +138,4 @@ function page({ onSwitchToSignup }: LoginFormProps) {
   )
 }
 
-export default page
+export default Page

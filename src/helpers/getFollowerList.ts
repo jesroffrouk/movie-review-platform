@@ -10,7 +10,7 @@ try {
     .lean()
     
      return users
-} catch (error: any) {
-    console.log(error.message)
+} catch (error) {
+    console.log(error)
 }
 }

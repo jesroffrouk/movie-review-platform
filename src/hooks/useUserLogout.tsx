@@ -1,12 +1,11 @@
-import { useAppDispatch, useAppSelector } from '@/lib/hooks'
-import React from 'react'
+import { useAppDispatch } from '@/lib/hooks'
 import { useRouter } from 'next/navigation'
 import { logout } from '@/lib/features/authSlice'
 
 function useUserLogout() {
     const dispatch = useAppDispatch()
     const router = useRouter()
-    const logoutFunc = async(e: any) => {
+    const logoutFunc = async(e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault()
       try {
           const request = await fetch('/api/user/logout')
@@ -16,8 +15,8 @@ function useUserLogout() {
               console.log("logout successfull")
               router.push('/moviezone')
           }
-      } catch (error:any) {
-          console.log("error while logout", error.message)
+      } catch (error) {
+          console.log(error)
       }
     }
   return logoutFunc

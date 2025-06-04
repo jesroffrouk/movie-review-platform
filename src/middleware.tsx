@@ -13,14 +13,9 @@ export async function middleware(request: NextRequest) {
   if(token){
     try {
       await jwtVerify(token,secretKey)
-    } catch (error: any) {
-      if (error.name === 'TokenExpiredError') {
-        console.log('Token expired. Please log in again.');
-        return NextResponse.redirect(new URL('/auth', request.url));
-      } else {
-        console.log('Invalid token:', error.message);
-        return NextResponse.redirect(new URL('/auth', request.url));
-      }
+    } catch (error) {
+      console.log('Invalid token:', error);
+      return NextResponse.redirect(new URL('/auth', request.url));
     }
   }
   

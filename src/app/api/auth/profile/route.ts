@@ -29,16 +29,17 @@ export async function GET() {
                 .lean()
 
                 return NextResponse.json({user,reviews}, { status: 200 });
-             } catch (error: any) {
-                console.log(error.message)
+             } catch (error) {
+                console.log(error)
                 return NextResponse.json({error: "error while accessing database"},{status: 501})
              }
-         } catch (error: any) {
+         } catch (error) {
           console.log(error)
           return NextResponse.json({error: 'token verification errors'},{status: 401})
          }
         
     } catch (error) {
+        console.log(error)
         return NextResponse.json({error: 'error while checking token'},{status: 500})
     }
     

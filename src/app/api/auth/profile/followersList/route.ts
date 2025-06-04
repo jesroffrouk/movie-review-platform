@@ -15,6 +15,7 @@ try {
     
      return NextResponse.json(users,{status: 200})
 } catch (error) {
+    console.log(error)
     return NextResponse.json({error: 'error in backend'},{status: 501})
 }
 }

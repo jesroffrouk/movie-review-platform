@@ -2,7 +2,8 @@
 
 import { use } from "react"
 import ReviewSection from "./Review"
-import { Star, Clock, Globe, Film, Calendar } from "lucide-react"
+import { Clock, Globe, Film, Calendar } from "lucide-react"
+import Image from "next/image"
 
 
 function Card({movieData}: {movieData: Promise<SingleMovie>}) {
@@ -14,9 +15,11 @@ function Card({movieData}: {movieData: Promise<SingleMovie>}) {
       <div className="card lg:card-side bg-base-100 shadow-xl mb-8">
           {/* Movie Poster (Vertical) */}
           <figure className="relative lg:w-1/3 max-w-sm">
-            <img
-              src={movie.Poster}
+            <Image
+              src={movie.Poster !== "N/A" ? movie.Poster : "/fallback.jpg"} // optional fallback
               alt="Movie Poster"
+              width={300} // adjust as needed
+              height={450} // adjust as needed
               className="h-full w-full object-cover rounded-t-xl lg:rounded-l-xl lg:rounded-tr-none"
             />
           </figure>

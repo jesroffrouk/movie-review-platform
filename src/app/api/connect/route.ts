@@ -22,8 +22,8 @@ export async function PUT(request: NextRequest){
 
        return NextResponse.json({message: 'successfully updated'},{status: 200})
 
-    } catch (error: any) {
-        console.log(error.message)
+    } catch (error) {
+        console.log(error)
        NextResponse.json({error: 'error while accessing database'},{status: 501}) 
     }
 }

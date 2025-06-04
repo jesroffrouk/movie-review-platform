@@ -1,5 +1,5 @@
 'use client'
-import { Star, Users, Film, Award, Search, Heart , HelpCircle, MessageCircle, Book, Mail, Headphones } from "lucide-react"
+import { Star, Users, Film, MessageCircle, Mail, Headphones } from "lucide-react"
 import UserInitializer from "./components/UserInitializer"
 
 const Hero = () =>{
@@ -110,32 +110,6 @@ const Features =() =>{
 }
 
 const HelpCentre = () =>{
-  const helpCategories = [
-    {
-      icon: <Book className="w-6 h-6" />,
-      title: "Getting Started",
-      description: "Learn the basics of using our platform",
-      articles: 12,
-      color: "from-emerald-400 to-teal-500",
-      bgColor: "from-emerald-50 to-teal-50",
-    },
-    {
-      icon: <MessageCircle className="w-6 h-6" />,
-      title: "Reviews & Ratings",
-      description: "How to write and manage your movie reviews",
-      articles: 8,
-      color: "from-blue-400 to-indigo-500",
-      bgColor: "from-blue-50 to-indigo-50",
-    },
-    {
-      icon: <HelpCircle className="w-6 h-6" />,
-      title: "Account & Profile",
-      description: "Manage your account settings and preferences",
-      articles: 15,
-      color: "from-purple-400 to-pink-500",
-      bgColor: "from-purple-50 to-pink-50",
-    },
-  ]
 
   const faqs = [
     {

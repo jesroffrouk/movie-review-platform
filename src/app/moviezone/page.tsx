@@ -4,7 +4,7 @@ import Card from "./components/Card";
 import { getMovies } from "./actions/actions";
 import Loading from "./components/Loading";
 
-export default async function moviezone({ searchParams }: { searchParams: Promise<{ search?: string }> }) {
+export default async function Moviezone({ searchParams }: { searchParams: Promise<{ search?: string }> }) {
   const params = await searchParams;
   const search = params?.search || '';
   const movies = getMovies(search)

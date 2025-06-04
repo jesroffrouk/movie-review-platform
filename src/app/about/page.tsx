@@ -1,5 +1,4 @@
 import Image from "next/image"
-Image
 
 export default function About(){
     return(
