@@ -18,7 +18,6 @@ function Page({ onSwitchToSignup }: LoginFormProps) {
 
   const handleSubmit = async(e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Login attempt:", formData)
     // Handle login logic here
      try {
         const request = await fetch('/api/user/login',{
@@ -28,7 +27,6 @@ function Page({ onSwitchToSignup }: LoginFormProps) {
         })
         const result = await request.json()
         if(!result.error){
-            console.log("login successfull")
             router.push('/')
         }
         else{

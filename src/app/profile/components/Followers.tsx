@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 
-export default function Followers({user}: {user: UserWreviews | null}){
+export default function Followers({user}: {user: UserWreviews}){
 
     const [followersList, setFollowersList] = useState([])
 
@@ -27,8 +27,8 @@ export default function Followers({user}: {user: UserWreviews | null}){
         <>
         <div className="min-h-screen flex items-start justify-center">
           <div className="w-full max-w-sm px-4">
-            <p>people who follows you</p>
-            {followersList && followersList.map((user: User) => (
+            <p className="text-center">people who follows you</p>
+            {followersList.length > 0  ? (followersList.map((user: User) => (
               <Link href={`/find/${user.username}`} key={user._id}>
                 <div className="card bg-base-100 shadow-md hover:shadow-lg transition-shadow mb-2">
                   <div className="card-body p-4">
@@ -52,7 +52,7 @@ export default function Followers({user}: {user: UserWreviews | null}){
                   </div>
                 </div>
               </Link>
-            ))}
+            ))):(<p className="text-center">No one</p>) }
           </div>
         </div>
 

@@ -8,6 +8,7 @@ import { useGetUserInfoQuery } from '@/lib/features/api';
 export default function Profile() {
   const [tab , setTab] = useState<"profile" | "followers" | "following">("profile");
   const {data: user , isLoading, isError} = useGetUserInfoQuery()
+  console.log(user)
   if(isError){
     return (
       <div className='text-center font-bold text-3xl text-red-700'>INTERNAL SERVER ERROR</div>

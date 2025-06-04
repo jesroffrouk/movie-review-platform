@@ -7,12 +7,11 @@ try {
     const idsParam = searchParams.get('ids')
     
     if(!idsParam){
-        return NextResponse.json({error: 'missing ids in parameter'},{status: 404})
-    
+        return NextResponse.json([],{status: 200})
     }
      const ids = idsParam.split(',')
      const users = await getFollowerList(ids)
-    
+    console.log(users)
      return NextResponse.json(users,{status: 200})
 } catch (error) {
     console.log(error)

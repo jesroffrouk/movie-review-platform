@@ -20,12 +20,12 @@ export async function GET(){
          return NextResponse.json(userData, {status: 200})
      } catch (error) {
       console.log(error)
-      return NextResponse.json({error: 'other errors'},{status: 401})
+      return NextResponse.json({error: 'invalid token'},{status: 401})
      }
 
 
    } catch (error) {
     console.log(error)
-    return NextResponse.json({error: "error while checking the token"}, {status: 500})
+    return NextResponse.json({error: "other error"}, {status: 500})
    }
 }
