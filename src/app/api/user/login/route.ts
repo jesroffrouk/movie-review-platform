@@ -3,6 +3,7 @@ import User from "@/models/UserSchema";
 import { NextRequest , NextResponse } from "next/server";
 import jwt from 'jsonwebtoken'
 import bcrypt from "bcryptjs";
+import { cookies } from "next/headers";
 
 connect()
 
@@ -39,10 +40,13 @@ export async function POST(request: NextRequest){
         const secretKey = process.env.TOKEN_SECRET!
         const token = jwt.sign({id: user._id,username: user.username},secretKey,{expiresIn: "1h"})
         const response = NextResponse.json({message: "User Logged in Successfully"}, {status: 200})
-        response.cookies.set('token',token,{
+        ;(await cookies()).set('token', token, {
             httpOnly: true,
+            secure: true, 
+            sameSite: 'lax', 
+            path: '/',
             expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
-        })
+            })
 
         return response
 
