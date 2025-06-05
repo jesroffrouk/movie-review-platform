@@ -28,7 +28,7 @@ function Page({ onSwitchToSignup }: LoginFormProps) {
         })
         const result = await request.json()
         if(!result.error){
-            router.push('/')
+            window.location.href = '/'
         }
         else{
           // error handling 
