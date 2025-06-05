@@ -7,9 +7,6 @@ import { useRouter } from "next/navigation";
 export default function Header(){
     const user = useAppSelector((state) => state.Auth.value)
     const router = useRouter()
-    const handleProfile = ()=>{
-      router.push('/profile')
-    }
     return (
       <>
       <div className="navbar shadow-sm relative z-10 bg-transparent">
@@ -43,7 +40,7 @@ export default function Header(){
     </div>
     <div className="navbar-end">
       <div className="btn">
-        <div onClick={handleProfile}>{user.username == '' ? "login":<CgProfile />}</div>
+        <div onClick={() => router.push('/profile')}>{user.username == '' ? "login":<CgProfile />}</div>
       </div>
     </div>
   </div>
