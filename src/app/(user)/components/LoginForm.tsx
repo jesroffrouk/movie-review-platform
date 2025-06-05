@@ -1,7 +1,7 @@
 'use client'
-import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { Eye, EyeOff, User, Lock } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 interface LoginFormProps {
   onSwitchToSignup: () => void
@@ -28,7 +28,9 @@ function Page({ onSwitchToSignup }: LoginFormProps) {
         })
         const result = await request.json()
         if(!result.error){
+            // window.location.href = '/'
             router.push('/')
+            router.refresh()
         }
         else{
           // error handling 
