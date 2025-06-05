@@ -7,10 +7,10 @@ export const api = createApi({
     tagTypes: ['Review', 'userDetails'],
     endpoints: (build) => ({
         getUser: build.query<Userdata , void>({
-            query: () => '/auth/me',
+            query: () => '/authserver/me',
         }),
         getUserInfo: build.query<UserWreviews, void>({
-            query: ()=> 'auth/profileInfo'
+            query: ()=> 'authserver/profileInfo'
         }),
 
         getReviews: build.query<Review[] , string>({
