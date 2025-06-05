@@ -5,7 +5,7 @@ import type { NextRequest } from 'next/server'
  
 export async function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname
-  const isPublic = path == '/login' || path == '/signup' || path == '/verifyemail' || path == '/' || path == '/about'
+  const isPublic = path == '/auth' || path == '/verifyemail' || path == '/' || path == '/about'
   const token = request.cookies.get('token')?.value
   const secretKey = new TextEncoder().encode(process.env.TOKEN_SECRET!)
 
