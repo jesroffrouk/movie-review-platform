@@ -32,5 +32,6 @@ export const config = {
   matcher: [
     '/moviezone',
     '/profile',
+    '/find'
   ],
 }

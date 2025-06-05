@@ -25,7 +25,7 @@ export default function Header(){
           <li>
             <Link href="/about">About</Link>
           </li>
-          <li><Link href="/moviezone">Search</Link></li>
+          <li><div onClick={()=> router.push('/moviezone')}>Search</div></li>
           <li><Link href="/find">Find</Link></li>
         </ul>
       </div>
@@ -37,8 +37,8 @@ export default function Header(){
         <li>
           <Link href="/about">About</Link>
         </li>
-        <li><Link href="/moviezone">Search</Link></li>
-        <li><Link href="/find">Find</Link></li>
+        <li><div onClick={()=> router.push('/moviezone')}>Search</div></li>
+        <li><div onClick={()=> router.push('/find')}>Find</div></li>
       </ul>
     </div>
     <div className="navbar-end">
