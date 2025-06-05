@@ -1,5 +1,4 @@
 'use client'
-import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { Eye, EyeOff, User, Lock } from "lucide-react"
 
@@ -8,7 +7,6 @@ interface LoginFormProps {
 }
 
 function Page({ onSwitchToSignup }: LoginFormProps) {
-  const router = useRouter()
   const [showPassword, setShowPassword] = useState(false)
   const [formData, setFormData] = useState({
     username: "",
