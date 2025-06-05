@@ -10,7 +10,7 @@ export const api = createApi({
             query: () => '/auth/me',
         }),
         getUserInfo: build.query<UserWreviews, void>({
-            query: ()=> 'auth/profile'
+            query: ()=> 'auth/profileInfo'
         }),
 
         getReviews: build.query<Review[] , string>({
