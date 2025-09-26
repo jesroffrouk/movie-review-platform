@@ -2,9 +2,9 @@
 
 const apikey = process.env.API_KEY!
 
-const filteredMoviesFunc = (movies: any) => {
+const filteredMoviesFunc = (movies: {Search: Movie}) => {
       const seen = new Set()
-      const returnMovies = movies.Search.filter((movie: any)=>{
+      const returnMovies = movies.Search.filter((movie)=>{
           if (seen.has(movie.imdbID)) {
             return false
           }

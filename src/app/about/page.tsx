@@ -98,7 +98,7 @@ export default function About() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-6 text-base-content">
-              Who's Behind This?
+              Who&apos;s Behind This?
             </h2>
             <div className="w-20 h-1 bg-primary mx-auto rounded-full"></div>
           </div>
@@ -114,9 +114,9 @@ export default function About() {
             <div className="card-body lg:w-2/3">
               <h3 className="card-title text-2xl mb-4">Movie Enthusiast & Developer</h3>
               <p className="text-lg leading-relaxed text-base-content/90 mb-4">
-                Hey there! I'm a passionate developer who's been obsessed with movies since childhood. 
-                When I'm not coding, you'll find me in a theater seat or diving deep into film analysis. 
-                I've watched everything from silent classics to the latest blockbusters, and I believe 
+                Hey there! I&apos;m a passionate developer who&apos;s been obsessed with movies since childhood. 
+                When I&apos;m not coding, you&apos;ll find me in a theater seat or diving deep into film analysis. 
+                I&apos;ve watched everything from silent classics to the latest blockbusters, and I believe 
                 every movie has something to offer – if you know where to look.
               </p>
               <p className="text-lg leading-relaxed text-base-content/90">
@@ -152,7 +152,7 @@ export default function About() {
                 My vision is simple: build the most trusted movie review community on the web. 
                 I want to create a space where every film gets a fair chance, where hidden gems 
                 can be discovered, and where your next favorite movie is just a review away. 
-                Together, we're building something special – a community that celebrates the magic 
+                Together, we&apos;re building something special – a community that celebrates the magic 
                 of cinema in all its forms.
               </p>
             </div>

@@ -201,7 +201,7 @@ const ConnectWithMe = () => {
             </h2>
           </div>
           <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Feel free to contact me on any of these platforms and let's connect.
+            Feel free to contact me on any of these platforms and let&apos;s connect.
           </p>
         </div>
 
@@ -238,7 +238,7 @@ const ConnectWithMe = () => {
                 Ready to Collaborate?
               </h3>
               <p className="text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto mb-8">
-                I'm always excited to work on new projects, discuss innovative ideas, or just have a friendly chat about technology and development.
+                I&apos;m always excited to work on new projects, discuss innovative ideas, or just have a friendly chat about technology and development.
               </p>
             </div>
 
