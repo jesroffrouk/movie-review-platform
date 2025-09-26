@@ -19,7 +19,8 @@ const handleSearch = (e: React.FormEvent) => {
     return (
       <>
       <div className="w-full px-10 sm:p-auto m-auto max-w-4xl ">
-        <label className="input input-bordered w-full flex items-center gap-2">
+        <form onSubmit={handleSearch}>
+            <label className="input input-bordered w-full flex items-center gap-2">
           <input 
             type="text" 
             className="flex-1 sm:w-auto bg-transparent outline-none" 
@@ -40,7 +41,8 @@ const handleSearch = (e: React.FormEvent) => {
               clipRule="evenodd"
             />
           </svg>
-        </label>
+        </label>      
+        </form>
       </div>
 
       

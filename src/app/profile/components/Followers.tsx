@@ -11,13 +11,11 @@ export default function Followers({user}: {user: UserWreviews}){
     useEffect(()=>{
         async function handleFollowers(){
             const query = user?.user.followers.join(',')
-            console.log(query)
-            const request = await fetch(`/api/auth/profile/followersList?ids=${query}`,{
+            const request = await fetch(`/api/authserver/profileInfo/followersList?ids=${query}`,{
                 method: 'GET',
                 credentials: 'include',
             })
             const response = await request.json()
-            console.log(response)
             setFollowersList(response)
         }
         handleFollowers()
