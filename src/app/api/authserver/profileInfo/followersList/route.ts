@@ -11,7 +11,6 @@ try {
     }
      const ids = idsParam.split(',')
      const users = await getFollowerList(ids)
-    console.log(users)
      return NextResponse.json(users,{status: 200})
 } catch (error) {
     console.log(error)

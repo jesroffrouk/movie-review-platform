@@ -12,12 +12,11 @@ export default function Following({user}: {user: UserWreviews }){
         async function handleFollowers(){
             try {
               const query = user.user.following.join(',')
-              const request = await fetch(`/api/auth/profile/followersList?ids=${query}`,{
+              const request = await fetch(`/api/authserver/profileInfo/followersList?ids=${query}`,{
                   method: 'GET',
                   credentials: 'include',
               })
               const response = await request.json()
-              console.log(response)
               setFollowingList(response)
             } catch (error) {
               console.log(error)

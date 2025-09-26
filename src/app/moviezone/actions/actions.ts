@@ -1,12 +1,32 @@
 'use server'
 
 const apikey = process.env.API_KEY!
+
+const filteredMoviesFunc = (movies: any) => {
+      const seen = new Set()
+      const returnMovies = movies.Search.filter((movie: any)=>{
+          if (seen.has(movie.imdbID)) {
+            return false
+          }
+          else {
+            seen.add(movie.imdbID)
+            return true
+          }
+        })
+      return returnMovies
+}
+
 const getMovies = async(search: string): Promise<Movie> =>{
   try {
      const searchQuery = encodeURIComponent(search)
     const response = await fetch(`https://www.omdbapi.com/?apikey=${apikey}&s=${searchQuery}`)
     const movies = await response.json()
-    return movies.Search ?? []
+    // filter this list
+    if (movies.Response == 'True') {
+      const filteredMovies = filteredMoviesFunc(movies)
+      return filteredMovies
+    }
+    return []
   } catch (error) {
     console.error("fetch failed")
     throw error

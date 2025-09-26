@@ -113,9 +113,9 @@ function Page({ onSwitchToSignup }: LoginFormProps) {
               <input type="checkbox" className="checkbox checkbox-primary checkbox-sm" />
               <span className="label-text ml-2">Remember me</span>
             </label>
-            <a href="#" className="link link-primary text-sm">
+            {/* <a href="#" className="link link-primary text-sm">
               Forgot password?
-            </a>
+            </a> */}
           </div>
             {
               error && (<div className="font-medium text-red-700 text-center">{error}</div>)

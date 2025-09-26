@@ -12,7 +12,6 @@ function useUserLogout() {
           const response = await request.json()
           if(!response.error){
             dispatch(logout())
-              console.log("logout successfull")
               router.push('/moviezone')
           }
       } catch (error) {

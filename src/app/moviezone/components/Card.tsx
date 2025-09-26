@@ -5,22 +5,23 @@ import MovieCard from "./MovieCard"
 export default function Card({movies}:{movies: Promise<Movie>}) {
   const allmovies = use(movies)
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-0 lg:gap-4 mt-7 mx-6">
-  {/* design */}
-  {
-    allmovies.map((movie) => (
-      // setting genre to movie type becoz my freaking api is not returning genre for this api call
-      <MovieCard
-        key={movie.imdbID}
-        id={movie.imdbID}
-        title={movie.Title}
-        imageUrl={movie.Poster}
-        releaseYear={movie.Year}
-        genre={movie.Type}
-      />   
-    ))
-  }
-      
+<div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+      <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6 lg:gap-7 xl:gap-8">
+        {allmovies.map((movie) => (
+          <div 
+            key={movie.imdbID}
+            className="flex justify-center w-full"
+          >
+            <MovieCard
+              id={movie.imdbID}
+              title={movie.Title}
+              imageUrl={movie.Poster}
+              releaseYear={movie.Year}
+              genre={movie.Type}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
